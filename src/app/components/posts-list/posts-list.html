@@ -1,23 +1,48 @@
-<nav>
-    <ul class="lista_nav d-flex justify-content-center">
-        <li><a class="nav_link" href="">Home</a></li>
-        <li><a class="nav_link" href="">Contato</a></li>
-        <li><a class="nav_link" href="">Sobre nós</a></li>
-    </ul>
+<nav class="navbar navbar-light bg-light mb-4 px-4 shadow-sm">
+    <span class="navbar-brand mb-0 h1 fw-bold">DummyJSON Posts</span>
 </nav>
-<main>
 
-    <button>+ Adicionar card</button>
+<main class="container pb-5">
+    <div class="d-flex justify-content-end mb-4">
+        <button class="btn btn-primary shadow-sm" (click)="openModalCreate()">
+            + Adicionar Post
+        </button>
+    </div>
 
-    <section>
+    <div class="row g-4">
+        @for (post of posts(); track post.id) {
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-header bg-white border-bottom-0 d-flex justify-content-between align-items-center pt-3">
+                        <span class="badge bg-secondary rounded-pill">ID: {{ post.id }}</span>
+                        
+                        <div ngbDropdown class="d-inline-block">
+                            <button type="button" class="btn btn-light btn-sm rounded-circle" id="dropdownBasic1" ngbDropdownToggle>
+                                &#8942; </button>
+                            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                <button ngbDropdownItem (click)="openModalUpdate(post)">Editar</button>
+                                <div class="dropdown-divider"></div>
+                                <button ngbDropdownItem class="text-danger" (click)="openModalDelete(post)">Excluir</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-body">
+                        <h5 class="card-title text-truncate fw-bold" [title]="post.title">
+                            {{ post.title }}
+                        </h5>
+                        <p class="card-text text-muted">
+                            {{ post.body | slice:0:100 }}{{ post.body && post.body.length > 100 ? '...' : '' }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
         
-    </section>
-    
-        
+        @if (posts().length === 0) {
+            <div class="col-12 text-center text-muted py-5">
+                <p>Nenhum post encontrado.</p>
+            </div>
+        }
+    </div>
 </main>
-
-<!-- 
-<button (click)="openModalCreate()">Abrir modal criar</button>
-<button (click)="openModalUpdate()">Abrir modal alterar</button>
-<button (click)="openModalDelete()">Abrir modal deletar</button> -->
-

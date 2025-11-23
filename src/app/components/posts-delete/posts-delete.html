@@ -1,18 +1,21 @@
 <div class="modal-header">
-    <h4 class="modal-title text-danger">Confirmar Exclusão</h4>
+    <h4 class="modal-title">Confirmar Exclusão</h4>
     <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
 </div>
 
 <div class="modal-body">
     <p>Tem certeza que deseja excluir o post:</p>
-    <p class="fw-bold">"{{ post.title }}"</p>
+    <p class="fw-bold text-center my-3">"{{ post.title }}"</p>
     
-    <div class="alert alert-warning mt-3 mb-0">
+    <!-- Usando um alerta mais sutil para um design minimalista -->
+    <div class="d-flex align-items-center text-muted p-2 border-start border-4 border-warning mt-3 mb-0">
+        <!-- Ícone de aviso (requer uma biblioteca de ícones como Bootstrap Icons ou Font Awesome) -->
+        <!-- <i class="bi bi-exclamation-triangle-fill me-2"></i> -->
         <small>Esta ação não pode ser desfeita.</small>
     </div>
 </div>
 
 <div class="modal-footer">
     <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Cancelar</button>
-    <button type="button" class="btn btn-danger" (click)="confirmDelete()">Sim, Excluir</button>
+    <button type="button" class="btn btn-danger" (click)="confirmDelete()">Excluir</button>
 </div>

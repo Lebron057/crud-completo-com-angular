@@ -1,1 +1,10 @@
-<p>toast-container works!</p>
+@for (toast of toastService.toasts; track toast) {
+	<ngb-toast
+		[class]="toast.classname"
+		[autohide]="true"
+		[delay]="toast.delay || 5000"
+		(hidden)="toastService.remove(toast)"
+	>
+		{{ toast.templateOrText }}
+	</ngb-toast>
+}

@@ -24,7 +24,7 @@ export class Toast {
   }
 
   // atalho para mostrar sucesso
-  showSucess(message: string) {
+  showSuccess(message: string) {
     this.show(message, { classname: 'bg-success text-light', delay: 5000 });
   }
 

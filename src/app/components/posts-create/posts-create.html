@@ -1,1 +1,25 @@
-<p>posts-create works!</p>
+<div class="modal-header">
+    <h4 class="modal-title">Criar Novo Post</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+</div>
+
+<div class="modal-body">
+    <form [formGroup]="form">
+        
+        <div class="mb-3">
+            <label for="title" class="form-label">Título</label>
+            <input type="text" class="form-control" id="title" formControlName="title" placeholder="Digite o título">
+        </div>
+
+        <div class="mb-3">
+            <label for="body" class="form-label">Conteúdo</label>
+            <textarea class="form-control" id="body" rows="3" formControlName="body" placeholder="Digite o conteúdo"></textarea>
+        </div>
+
+    </form>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Cancelar</button>
+    <button type="button" class="btn btn-success" (click)="save()" [disabled]="form.invalid">Salvar</button>
+</div>

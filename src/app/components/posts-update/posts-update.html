@@ -1,0 +1,25 @@
+<div class="modal-header">
+    <h4 class="modal-title">Editar Post</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+</div>
+
+<div class="modal-body">
+    <form [formGroup]="form">
+        
+        <div class="mb-3">
+            <label for="titleEdit" class="form-label">Título</label>
+            <input type="text" class="form-control" id="titleEdit" formControlName="title">
+        </div>
+
+        <div class="mb-3">
+            <label for="bodyEdit" class="form-label">Conteúdo</label>
+            <textarea class="form-control" id="bodyEdit" rows="3" formControlName="body"></textarea>
+        </div>
+
+    </form>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Cancelar</button>
+    <button type="button" class="btn btn-primary" (click)="update()" [disabled]="form.invalid">Atualizar</button>
+</div>
